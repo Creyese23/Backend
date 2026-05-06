@@ -1,0 +1,12 @@
+package com.sena.creyese.dentvision_backend_springboot.repository;
+
+import com.sena.creyese.dentvision_backend_springboot.entity.Pago;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface PagoRepository extends JpaRepository<Pago, Long> {
+    List<Pago> findByFactura_IdFactura(Long idFactura);
+}
