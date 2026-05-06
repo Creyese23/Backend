@@ -10,7 +10,10 @@ import lombok.NoArgsConstructor;
 public class LoginResponse {
     private String token;
     private String tipo = "Bearer";
-    private Long idEmpleado;
+    private Long idUsuario;
+    private String email;
+    private String tipoUsuario; // "EMPLEADO" or "PACIENTE"
+    private Long idPersona; // idEmpleado or idPaciente
     private String nombres;
     private String apellidos;
     private String rol;
