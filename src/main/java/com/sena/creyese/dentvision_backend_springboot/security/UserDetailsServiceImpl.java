@@ -1,7 +1,7 @@
 package com.sena.creyese.dentvision_backend_springboot.security;
 
-import com.sena.creyese.dentvision_backend_springboot.entity.Empleado;
-import com.sena.creyese.dentvision_backend_springboot.repository.EmpleadoRepository;
+import com.sena.creyese.dentvision_backend_springboot.entity.Usuario;
+import com.sena.creyese.dentvision_backend_springboot.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,18 +14,21 @@ import java.util.ArrayList;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private EmpleadoRepository empleadoRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String documento) throws UsernameNotFoundException {
-        Empleado empleado = empleadoRepository.findByDocumento(documento)
-                .orElseThrow(() -> new UsernameNotFoundException("Empleado no encontrado con documento: " + documento));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Usuario usuario = usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado con email: " + email));
 
         return org.springframework.security.core.userdetails.User
-                .withUsername(empleado.getDocumento())
-                .password(empleado.getPassword())
+                .withUsername(usuario.getEmail())
+                .password(usuario.getPassword())
                 .authorities(new ArrayList<>())
-                .accountLocked(!empleado.getEstado().equals("ACTIVO"))
+                .accountExpired(false)
+                .accountLocked(false)
+                .credentialsExpired(false)
+                .disabled(false)
                 .build();
     }
 }
