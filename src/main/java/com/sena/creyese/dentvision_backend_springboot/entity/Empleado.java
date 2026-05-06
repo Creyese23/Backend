@@ -45,4 +45,8 @@ public class Empleado {
     
     @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmpleadoRol> empleadoRoles = new ArrayList<>();
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario", unique = true)
+    private Usuario usuario;
 }

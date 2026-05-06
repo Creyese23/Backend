@@ -23,4 +23,5 @@ public class PacienteDTO {
     private LocalDate fechaNacimiento;
     
     private String estado;
+    private UsuarioDTO usuario;
 }
