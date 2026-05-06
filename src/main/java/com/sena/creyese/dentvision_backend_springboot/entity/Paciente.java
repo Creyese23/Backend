@@ -44,4 +44,8 @@ public class Paciente {
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, length = 20)
     private PacienteEstado estado;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario", unique = true)
+    private Usuario usuario;
 }

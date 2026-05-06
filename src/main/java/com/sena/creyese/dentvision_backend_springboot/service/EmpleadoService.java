@@ -1,7 +1,9 @@
 package com.sena.creyese.dentvision_backend_springboot.service;
 
 import com.sena.creyese.dentvision_backend_springboot.entity.Empleado;
+import com.sena.creyese.dentvision_backend_springboot.entity.Usuario;
 import com.sena.creyese.dentvision_backend_springboot.repository.EmpleadoRepository;
+import com.sena.creyese.dentvision_backend_springboot.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class EmpleadoService {
 
     @Autowired
     private EmpleadoRepository empleadoRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public List<Empleado> findAll() {
         return empleadoRepository.findAll();
@@ -48,5 +53,11 @@ public class EmpleadoService {
             return true;
         }
         return false;
+    }
+
+    public Empleado saveWithUsuario(Empleado empleado, Usuario usuario) {
+        Usuario savedUsuario = usuarioRepository.save(usuario);
+        empleado.setUsuario(savedUsuario);
+        return empleadoRepository.save(empleado);
     }
 }
