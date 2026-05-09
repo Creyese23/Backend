@@ -29,6 +29,6 @@ public class Mensaje {
     private LocalDateTime fechaHora;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_conversacion", nullable = false)
+    @JoinColumn(name = "idConversacion", nullable = false)
     private Conversacion conversacion;
 }

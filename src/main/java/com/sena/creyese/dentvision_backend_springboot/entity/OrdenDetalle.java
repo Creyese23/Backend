@@ -20,11 +20,11 @@ public class OrdenDetalle {
     private Long idOrdenDetalle;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_orden", nullable = false)
+    @JoinColumn(name = "idOrden", nullable = false)
     private Orden orden;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_servicio", nullable = false)
+    @JoinColumn(name = "idServicio", nullable = false)
     private Servicio servicio;
     
     @Column(name = "cantidad", nullable = false)

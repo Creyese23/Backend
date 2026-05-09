@@ -1,6 +1,7 @@
 package com.sena.creyese.dentvision_backend_springboot.controller;
 
 import com.sena.creyese.dentvision_backend_springboot.entity.MovimientoInventario;
+import com.sena.creyese.dentvision_backend_springboot.enums.TipoMovimientoInventario;
 import com.sena.creyese.dentvision_backend_springboot.service.MovimientoInventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,7 +38,7 @@ public class MovimientoInventarioController {
     }
 
     @GetMapping("/tipo/{tipoMovimiento}")
-    public ResponseEntity<List<MovimientoInventario>> getMovimientosByTipo(@PathVariable String tipoMovimiento) {
+    public ResponseEntity<List<MovimientoInventario>> getMovimientosByTipo(@PathVariable TipoMovimientoInventario tipoMovimiento) {
         List<MovimientoInventario> movimientos = movimientoInventarioService.findByTipoMovimiento(tipoMovimiento);
         return new ResponseEntity<>(movimientos, HttpStatus.OK);
     }

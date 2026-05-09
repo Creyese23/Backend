@@ -29,10 +29,10 @@ public class DetalleFactura {
     private BigDecimal subtotal;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_factura", nullable = false)
+    @JoinColumn(name = "idFactura", nullable = false)
     private Factura factura;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_servicio", nullable = false)
+    @JoinColumn(name = "idServicio", nullable = false)
     private Servicio servicio;
 }
