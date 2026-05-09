@@ -22,8 +22,8 @@ public class InventarioService {
         return inventarioRepository.findById(id);
     }
 
-    public List<Insumo> findByEstado(String estado) {
-        return inventarioRepository.findByEstado(estado);
+    public List<Insumo> findByEstado(Insumo estado) {
+        return inventarioRepository.findByEstado(estado.getEstado());
     }
 
     public Insumo save(Insumo insumo) {

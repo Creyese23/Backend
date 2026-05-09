@@ -31,10 +31,10 @@ public class MovimientoInventario {
     private LocalDate fecha;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_insumo", nullable = false)
+    @JoinColumn(name = "idInsumo", nullable = false)
     private Insumo insumo;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_empleado", nullable = false)
+    @JoinColumn(name = "idEmpleado", nullable = false)
     private Empleado empleado;
 }

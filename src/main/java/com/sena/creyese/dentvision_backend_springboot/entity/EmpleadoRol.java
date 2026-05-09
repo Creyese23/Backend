@@ -18,10 +18,10 @@ public class EmpleadoRol {
     private Long idEmpleadoRol;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_empleado", nullable = false)
+    @JoinColumn(name = "idEmpleado", nullable = false)
     private Empleado empleado;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_rol", nullable = false)
+    @JoinColumn(name = "idRol", nullable = false)
     private Rol rol;
 }

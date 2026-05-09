@@ -20,11 +20,11 @@ public class CitaServicio {
     private Long idCitaServicio;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cita", nullable = false)
+    @JoinColumn(name = "idCita", nullable = false)
     private Cita cita;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_servicio", nullable = false)
+    @JoinColumn(name = "idServicio", nullable = false)
     private Servicio servicio;
     
     @Column(name = "precio_acordado", nullable = false, precision = 10, scale = 2)

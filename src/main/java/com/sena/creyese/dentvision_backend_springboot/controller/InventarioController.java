@@ -31,7 +31,7 @@ public class InventarioController {
     }
 
     @GetMapping("/estado/{estado}")
-    public ResponseEntity<List<Insumo>> getInventarioByEstado(@PathVariable String estado) {
+    public ResponseEntity<List<Insumo>> getInventarioByEstado(@PathVariable Insumo estado) {
         List<Insumo> inventario = inventarioService.findByEstado(estado);
         return new ResponseEntity<>(inventario, HttpStatus.OK);
     }

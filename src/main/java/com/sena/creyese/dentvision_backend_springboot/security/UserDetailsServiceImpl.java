@@ -16,6 +16,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @SuppressWarnings("NullableProblems")
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepository.findByEmail(email)

@@ -33,7 +33,7 @@ public class Orden {
     private OrdenEstado estado;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_procedimiento", nullable = false)
+    @JoinColumn(name = "idProcedimiento", nullable = false)
     private Procedimiento procedimiento;
 
     @OneToMany(mappedBy = "orden", cascade = CascadeType.ALL, orphanRemoval = true)

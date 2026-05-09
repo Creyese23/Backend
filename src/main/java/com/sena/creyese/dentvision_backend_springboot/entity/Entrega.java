@@ -31,6 +31,6 @@ public class Entrega {
     private String observaciones;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_orden", nullable = false)
+    @JoinColumn(name = "idOrden", nullable = false)
     private Orden orden;
 }

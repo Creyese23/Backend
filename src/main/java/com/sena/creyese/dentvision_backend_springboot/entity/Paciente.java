@@ -55,7 +55,7 @@ public class Paciente {
     private LocalDateTime fechaActualizacion;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_usuario", unique = true)
+    @JoinColumn(name = "idUsuario", unique = true)
     @JsonIgnore
     private Usuario usuario;
 

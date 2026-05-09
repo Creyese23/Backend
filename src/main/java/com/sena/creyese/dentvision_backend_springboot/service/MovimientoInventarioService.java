@@ -1,6 +1,7 @@
 package com.sena.creyese.dentvision_backend_springboot.service;
 
 import com.sena.creyese.dentvision_backend_springboot.entity.MovimientoInventario;
+import com.sena.creyese.dentvision_backend_springboot.enums.TipoMovimientoInventario;
 import com.sena.creyese.dentvision_backend_springboot.repository.MovimientoInventarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,10 +24,10 @@ public class MovimientoInventarioService {
     }
 
     public List<MovimientoInventario> findByInsumo(Long idInsumo) {
-        return movimientoInventarioRepository.findByInventarioIdInsumo(idInsumo);
+        return movimientoInventarioRepository.findByInventorIdInsumo(idInsumo);
     }
 
-    public List<MovimientoInventario> findByTipoMovimiento(String tipoMovimiento) {
+    public List<MovimientoInventario> findByTipoMovimiento(TipoMovimientoInventario tipoMovimiento) {
         return movimientoInventarioRepository.findByTipoMovimiento(tipoMovimiento);
     }
 

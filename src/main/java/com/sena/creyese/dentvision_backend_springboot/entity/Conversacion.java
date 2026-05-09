@@ -28,7 +28,7 @@ public class Conversacion {
     private LocalDateTime fechaFin;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_paciente", nullable = false)
+    @JoinColumn(name = "idPaciente", nullable = false)
     private Paciente paciente;
     
     @OneToMany(mappedBy = "conversacion", cascade = CascadeType.ALL, orphanRemoval = true)

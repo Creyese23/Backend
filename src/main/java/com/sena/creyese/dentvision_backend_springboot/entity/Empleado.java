@@ -40,7 +40,7 @@ public class Empleado {
     private List<EmpleadoRol> empleadoRoles = new ArrayList<>();
     
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_usuario", unique = true)
+    @JoinColumn(name = "idUsuario", unique = true)
     @JsonIgnore
     private Usuario usuario;
 }
