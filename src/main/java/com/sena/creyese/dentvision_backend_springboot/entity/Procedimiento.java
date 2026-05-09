@@ -5,8 +5,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @SuppressWarnings("ALL")
 @Entity
@@ -32,12 +35,23 @@ public class Procedimiento {
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, length = 20)
     private ProcedimientoEstado estado;
-    
+
+    @CreationTimestamp
+    @Column(name = "fecha_creacion", nullable = false, updatable = false)
+    private LocalDateTime fechaCreacion;
+
+    @UpdateTimestamp
+    @Column(name = "fecha_actualizacion", nullable = false)
+    private LocalDateTime fechaActualizacion;
+
+    @Column(name = "fecha_eliminacion")
+    private LocalDateTime fechaEliminacion;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cita", nullable = false)
+    @JoinColumn(name = "idCita", nullable = false)
     private Cita cita;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_tecnico", nullable = false)
+    @JoinColumn(name = "idEmpleado", nullable = false)
     private Empleado tecnico;
 }

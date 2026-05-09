@@ -12,7 +12,10 @@ import java.time.LocalDateTime;
 public class UsuarioDTO {
     private Long idUsuario;
     private String email;
+    private String password;
     private Boolean usuarioPorDefecto;
+    private String estado;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaActualizacion;
+    private LocalDateTime fechaEliminacion;
 }

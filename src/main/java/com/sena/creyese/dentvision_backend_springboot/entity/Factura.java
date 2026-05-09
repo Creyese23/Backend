@@ -5,9 +5,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,20 +27,22 @@ public class Factura {
     
     @Column(name = "fecha_emision", nullable = false)
     private LocalDate fechaEmision;
-    
-    @Column(name = "subtotal", nullable = false)
-    private BigDecimal subtotal;
-    
-    @Column(name = "impuestos", nullable = false)
-    private BigDecimal impuestos;
-    
-    @Column(name = "total", nullable = false)
-    private BigDecimal total;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "estado_pago", nullable = false, length = 20)
     private EstadoPago estadoPago;
-    
+
+    @CreationTimestamp
+    @Column(name = "fecha_creacion", nullable = false, updatable = false)
+    private LocalDateTime fechaCreacion;
+
+    @UpdateTimestamp
+    @Column(name = "fecha_actualizacion", nullable = false)
+    private LocalDateTime fechaActualizacion;
+
+    @Column(name = "fecha_eliminacion")
+    private LocalDateTime fechaEliminacion;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_paciente", nullable = false)
     private Paciente paciente;

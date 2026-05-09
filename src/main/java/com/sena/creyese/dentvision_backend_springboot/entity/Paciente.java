@@ -1,12 +1,16 @@
 package com.sena.creyese.dentvision_backend_springboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sena.creyese.dentvision_backend_springboot.enums.PacienteEstado;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @SuppressWarnings("ALL")
 @Entity
@@ -31,10 +35,7 @@ public class Paciente {
     
     @Column(name = "telefono", length = 20)
     private String telefono;
-    
-    @Column(name = "correo", length = 100)
-    private String correo;
-    
+
     @Column(name = "direccion", length = 200)
     private String direccion;
     
@@ -44,8 +45,20 @@ public class Paciente {
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, length = 20)
     private PacienteEstado estado;
-    
+
+    @CreationTimestamp
+    @Column(name = "fecha_creacion", nullable = false, updatable = false)
+    private LocalDateTime fechaCreacion;
+
+    @UpdateTimestamp
+    @Column(name = "fecha_actualizacion", nullable = false)
+    private LocalDateTime fechaActualizacion;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario", unique = true)
+    @JsonIgnore
     private Usuario usuario;
+
+    @Column(name = "fecha_eliminacion")
+    private LocalDateTime fechaEliminacion;
 }

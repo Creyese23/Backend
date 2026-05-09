@@ -5,9 +5,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @SuppressWarnings("ALL")
 @Entity
@@ -37,4 +40,15 @@ public class Pago {
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, length = 20)
     private PagoEstado estado;
+
+    @CreationTimestamp
+    @Column(name = "fecha_creacion", nullable = false, updatable = false)
+    private LocalDateTime fechaCreacion;
+
+    @UpdateTimestamp
+    @Column(name = "fecha_actualizacion", nullable = false)
+    private LocalDateTime fechaActualizacion;
+
+    @Column(name = "fecha_eliminacion")
+    private LocalDateTime fechaEliminacion;
 }

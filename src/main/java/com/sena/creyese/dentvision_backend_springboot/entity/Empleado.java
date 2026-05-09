@@ -1,6 +1,6 @@
 package com.sena.creyese.dentvision_backend_springboot.entity;
 
-import com.sena.creyese.dentvision_backend_springboot.enums.EmpleadoEstado;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,21 +32,15 @@ public class Empleado {
     
     @Column(name = "telefono", length = 20)
     private String telefono;
-    
-    @Column(name = "correo", length = 100)
-    private String correo;
-    
-    @Column(name = "password", nullable = false, length = 255)
-    private String password;
-    
-    @Enumerated(EnumType.STRING)
+
     @Column(name = "estado", nullable = false, length = 20)
-    private EmpleadoEstado estado;
+    private String estado = "ACTIVO";
     
     @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmpleadoRol> empleadoRoles = new ArrayList<>();
     
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario", unique = true)
+    @JsonIgnore
     private Usuario usuario;
 }
