@@ -48,58 +48,32 @@ public class AuthController {
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         try {
             Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
+                    new UsernamePasswordAuthenticationToken(loginRequest.getDocumento(), loginRequest.getPassword())
             );
 
-            String token = jwtUtil.generateToken(loginRequest.getEmail());
+            String token = jwtUtil.generateToken(loginRequest.getDocumento());
 
-            Usuario usuario = usuarioRepository.findByEmail(loginRequest.getEmail())
+            Empleado empleado = empleadoRepository.findByDocumento(loginRequest.getDocumento())
                     .orElse(null);
 
-            if (usuario == null) {
+            if (empleado == null) {
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
 
-            String tipoUsuario = null;
-            Long idPersona = null;
-            String nombres = null;
-            String apellidos = null;
-            String rol = null;
-
-            // Check if it's an Empleado
-            if (usuario.getEmpleado() != null) {
-                Empleado empleado = usuario.getEmpleado();
-                tipoUsuario = "EMPLEADO";
-                idPersona = empleado.getIdEmpleado();
-                nombres = empleado.getNombres();
-                apellidos = empleado.getApellidos();
-
-                // Obtener el primer rol del empleado
-                List<EmpleadoRol> empleadoRoles = empleadoRolRepository.findByEmpleado_IdEmpleado(empleado.getIdEmpleado());
-                if (!empleadoRoles.isEmpty()) {
-                    rol = empleadoRoles.get(0).getRol().getNombreRol();
-                }
-            }
-            // Check if it's a Paciente
-            else if (usuario.getPaciente() != null) {
-                Paciente paciente = usuario.getPaciente();
-                tipoUsuario = "PACIENTE";
-                idPersona = paciente.getIdPaciente();
-                nombres = paciente.getNombres();
-                apellidos = paciente.getApellidos();
-                rol = "PACIENTE";
+            // Obtener el primer rol del empleado
+            String rolNombre = null;
+            List<EmpleadoRol> empleadoRoles = empleadoRolRepository.findByEmpleado_IdEmpleado(empleado.getIdEmpleado());
+            if (!empleadoRoles.isEmpty()) {
+                rolNombre = empleadoRoles.get(0).getRol().getNombreRol();
             }
 
             LoginResponse response = new LoginResponse(
                     token,
                     "Bearer",
-                    usuario.getIdUsuario(),
-                    usuario.getEmail(),
-                    tipoUsuario,
-                    idPersona,
-                    nombres,
-                    apellidos,
-                    rol
+                    empleado.getIdEmpleado(),
+                    empleado.getNombres(),
+                    empleado.getApellidos(),
+                    rolNombre
             );
 
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -31,8 +31,8 @@ public class PacienteService {
         return pacienteRepository.findByDocumento(documento);
     }
 
-    public Optional<Paciente> findByCorreo(String correo) {
-        return pacienteRepository.findByCorreo(correo);
+    public Optional<Paciente> findByEmail(String email) {
+        return pacienteRepository.findByEmail(email);
     }
 
     public Paciente save(Paciente paciente) {

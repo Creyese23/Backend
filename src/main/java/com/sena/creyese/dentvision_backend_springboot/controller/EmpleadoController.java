@@ -37,9 +37,9 @@ public class EmpleadoController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/correo/{correo}")
-    public ResponseEntity<Empleado> getEmpleadoByCorreo(@PathVariable String correo) {
-        return empleadoService.findByCorreo(correo)
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Empleado> getEmpleadoByEmail(@PathVariable String email) {
+        return empleadoService.findByEmail(email)
                 .map(empleado -> new ResponseEntity<>(empleado, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

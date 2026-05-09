@@ -31,8 +31,8 @@ public class EmpleadoService {
         return empleadoRepository.findByDocumento(documento);
     }
 
-    public Optional<Empleado> findByCorreo(String correo) {
-        return empleadoRepository.findByCorreo(correo);
+    public Optional<Empleado> findByEmail(String email) {
+        return empleadoRepository.findByEmail(email);
     }
 
     public Empleado save(Empleado empleado) {

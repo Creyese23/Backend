@@ -1,5 +1,6 @@
 package com.sena.creyese.dentvision_backend_springboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,18 +30,26 @@ public class Usuario {
     
     @Column(name = "usuario_por_defecto", nullable = false)
     private Boolean usuarioPorDefecto = false;
-    
+
+    @Column(name = "estado", nullable = false, length = 20)
+    private String estado = "ACTIVO";
+
     @CreationTimestamp
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
-    
+
     @UpdateTimestamp
     @Column(name = "fecha_actualizacion", nullable = false)
     private LocalDateTime fechaActualizacion;
+
+    @Column(name = "fecha_eliminacion")
+    private LocalDateTime fechaEliminacion;
     
+    @JsonIgnore
     @OneToOne(mappedBy = "usuario")
     private Empleado empleado;
     
+    @JsonIgnore
     @OneToOne(mappedBy = "usuario")
     private Paciente paciente;
 }

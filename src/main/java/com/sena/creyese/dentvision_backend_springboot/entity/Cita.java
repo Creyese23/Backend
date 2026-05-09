@@ -6,8 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +24,7 @@ public class Cita {
     private Long idCita;
     
     @Column(name = "fecha", nullable = false)
-    private LocalDate fecha;
-    
-    @Column(name = "hora", nullable = false)
-    private LocalTime hora;
+    private LocalDateTime fechaHora;
     
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, length = 20)
@@ -37,11 +34,11 @@ public class Cita {
     private String motivo;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_paciente", nullable = false)
+    @JoinColumn(name = "idPaciente", nullable = false)
     private Paciente paciente;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_odontologo", nullable = false)
+    @JoinColumn(name = "idEmpleado", nullable = false)
     private Empleado odontologo;
 
     @OneToMany(mappedBy = "cita", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -13,7 +13,6 @@ public class EmpleadoDTO {
     private String apellidos;
     private String documento;
     private String telefono;
-    private String correo;
     private String estado;
     private UsuarioDTO usuario;
 }
