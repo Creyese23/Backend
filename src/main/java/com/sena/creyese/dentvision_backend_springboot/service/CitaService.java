@@ -5,7 +5,7 @@ import com.sena.creyese.dentvision_backend_springboot.repository.CitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +23,8 @@ public class CitaService {
         return citaRepository.findById(id);
     }
 
-    public List<Cita> findByFecha(LocalDate fecha) {
-        return citaRepository.findByFecha(fecha);
+    public List<Cita> findByFechaHora(LocalDateTime fechaHora) {
+        return citaRepository.findByFechaHora(fechaHora);
     }
 
     public List<Cita> findByPaciente(Long idPaciente) {

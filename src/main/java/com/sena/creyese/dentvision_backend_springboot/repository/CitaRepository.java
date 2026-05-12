@@ -5,11 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public interface CitaRepository extends JpaRepository<Cita, Long> {
-    List<Cita> findByFecha(LocalDate fecha);
+    List<Cita> findByFechaHora(LocalDateTime fechaHora);
     List<Cita> findByPacienteIdPaciente(Long idPaciente);
     List<Cita> findByOdontologoIdEmpleado(Long idOdontologo);
 }

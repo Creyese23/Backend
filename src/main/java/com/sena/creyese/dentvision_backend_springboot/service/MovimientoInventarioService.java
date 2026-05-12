@@ -24,7 +24,7 @@ public class MovimientoInventarioService {
     }
 
     public List<MovimientoInventario> findByInsumo(Long idInsumo) {
-        return movimientoInventarioRepository.findByInventorIdInsumo(idInsumo);
+        return movimientoInventarioRepository.findBIdInsumo(idInsumo);
     }
 
     public List<MovimientoInventario> findByTipoMovimiento(TipoMovimientoInventario tipoMovimiento) {

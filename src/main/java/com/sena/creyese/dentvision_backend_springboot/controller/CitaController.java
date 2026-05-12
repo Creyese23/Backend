@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -33,8 +34,8 @@ public class CitaController {
     }
 
     @GetMapping("/fecha/{fecha}")
-    public ResponseEntity<List<Cita>> getCitasByFecha(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
-        List<Cita> citas = citaService.findByFecha(fecha);
+    public ResponseEntity<List<Cita>> getCitasByFecha(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime fechaHora) {
+        List<Cita> citas = citaService.findByFechaHora(fechaHora);
         return new ResponseEntity<>(citas, HttpStatus.OK);
     }
 

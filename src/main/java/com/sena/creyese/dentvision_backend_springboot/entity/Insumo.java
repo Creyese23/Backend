@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @SuppressWarnings("ALL")
 @Entity
-@Table(name = "insumos")
+@Table(name = "insumo")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
