@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "movimiento_inventario")
 @Data
@@ -31,10 +30,10 @@ public class MovimientoInventario {
     private LocalDate fecha;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idInsumo", nullable = false)
+    @JoinColumn(name = "id_insumo", nullable = false)
     private Insumo insumo;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idEmpleado", nullable = false)
+    @JoinColumn(name = "id_empleado", nullable = false)
     private Empleado empleado;
 }

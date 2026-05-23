@@ -10,7 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "insumo")
 @Data

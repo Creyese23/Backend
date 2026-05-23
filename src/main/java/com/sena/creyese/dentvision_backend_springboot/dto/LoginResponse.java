@@ -18,4 +18,5 @@ public class LoginResponse {
     private String apellidos;
     private String rol;
 
+    
 }

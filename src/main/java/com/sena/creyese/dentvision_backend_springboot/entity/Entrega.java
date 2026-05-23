@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "entrega")
 @Data
@@ -31,6 +30,6 @@ public class Entrega {
     private String observaciones;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idOrden", nullable = false)
+    @JoinColumn(name = "id_orden", nullable = false)
     private Orden orden;
 }
