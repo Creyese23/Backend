@@ -11,7 +11,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "procedimiento")
 @Data
@@ -48,10 +47,10 @@ public class Procedimiento {
     private LocalDateTime fechaEliminacion;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idCita", nullable = false)
+    @JoinColumn(name = "id_cita", nullable = false)
     private Cita cita;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idEmpleado", nullable = false)
+    @JoinColumn(name = "id_empleado", nullable = false)
     private Empleado tecnico;
 }

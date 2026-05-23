@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "role")
 @Data

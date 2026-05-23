@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "conversacion")
 @Data
@@ -28,7 +27,7 @@ public class Conversacion {
     private LocalDateTime fechaFin;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPaciente", nullable = false)
+    @JoinColumn(name = "id_paciente", nullable = false)
     private Paciente paciente;
     
     @OneToMany(mappedBy = "conversacion", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "orden")
 @Data
@@ -33,7 +32,7 @@ public class Orden {
     private OrdenEstado estado;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idProcedimiento", nullable = false)
+    @JoinColumn(name = "id_procedimiento", nullable = false)
     private Procedimiento procedimiento;
 
     @OneToMany(mappedBy = "orden", cascade = CascadeType.ALL, orphanRemoval = true)

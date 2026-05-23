@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "detalle_factura")
 @Data
@@ -29,10 +28,10 @@ public class DetalleFactura {
     private BigDecimal subtotal;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idFactura", nullable = false)
+    @JoinColumn(name = "id_factura", nullable = false)
     private Factura factura;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idServicio", nullable = false)
+    @JoinColumn(name = "id_servicio", nullable = false)
     private Servicio servicio;
 }

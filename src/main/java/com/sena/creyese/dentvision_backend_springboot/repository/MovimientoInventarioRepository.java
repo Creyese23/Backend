@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface MovimientoInventarioRepository extends JpaRepository<MovimientoInventario, Long> {
-    List<MovimientoInventario> findBIdInsumo(Long idInsumo);
+    List<MovimientoInventario> findByInsumo_IdInsumo(Long idInsumo);
     List<MovimientoInventario> findByTipoMovimiento(TipoMovimientoInventario tipoMovimiento);
 }

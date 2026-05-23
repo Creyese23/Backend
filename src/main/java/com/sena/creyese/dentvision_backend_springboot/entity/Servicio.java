@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "servicio")
 @Data

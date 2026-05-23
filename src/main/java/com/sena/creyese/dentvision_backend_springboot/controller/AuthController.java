@@ -4,14 +4,11 @@ import com.sena.creyese.dentvision_backend_springboot.dto.LoginRequest;
 import com.sena.creyese.dentvision_backend_springboot.dto.LoginResponse;
 import com.sena.creyese.dentvision_backend_springboot.entity.Empleado;
 import com.sena.creyese.dentvision_backend_springboot.entity.EmpleadoRol;
+import com.sena.creyese.dentvision_backend_springboot.entity.Paciente;
 import com.sena.creyese.dentvision_backend_springboot.entity.Usuario;
-import com.sena.creyese.dentvision_backend_springboot.repository.EmpleadoRepository;
 import com.sena.creyese.dentvision_backend_springboot.repository.EmpleadoRolRepository;
-import com.sena.creyese.dentvision_backend_springboot.repository.PacienteRepository;
 import com.sena.creyese.dentvision_backend_springboot.repository.UsuarioRepository;
 import com.sena.creyese.dentvision_backend_springboot.security.JwtUtil;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,22 +28,12 @@ public class AuthController {
 
     private final UsuarioRepository usuarioRepository;
 
-    @Setter
-    @Getter
-    private EmpleadoRepository empleadoRepository;
-
-    @Setter
-    @Getter
-    private PacienteRepository pacienteRepository;
-
     private final EmpleadoRolRepository empleadoRolRepository;
 
-    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UsuarioRepository usuarioRepository, EmpleadoRepository empleadoRepository, PacienteRepository pacienteRepository, EmpleadoRolRepository empleadoRolRepository) {
+    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UsuarioRepository usuarioRepository, EmpleadoRolRepository empleadoRolRepository) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.usuarioRepository = usuarioRepository;
-        this.empleadoRepository = empleadoRepository;
-        this.pacienteRepository = pacienteRepository;
         this.empleadoRolRepository = empleadoRolRepository;
     }
 
@@ -71,23 +58,23 @@ public class AuthController {
             String apellidos;
             String rolNombre = null;
 
-            // Verificar si es empleado
-            if (usuario.getEmpleado() != null) {
-                Empleado empleado = usuario.getEmpleado();
+            // Verificar si es empleado o paciente usando instanceof
+            if (usuario instanceof Empleado) {
+                Empleado empleado = (Empleado) usuario;
                 tipoUsuario = "EMPLEADO";
-                idPersona = empleado.getIdEmpleado();
+                idPersona = empleado.getIdUsuario();
                 nombres = empleado.getNombres();
                 apellidos = empleado.getApellidos();
                 // Obtener el primer rol del empleado
-                List<EmpleadoRol> empleadoRoles = empleadoRolRepository.findByEmpleado_IdEmpleado(empleado.getIdEmpleado());
+                List<EmpleadoRol> empleadoRoles = empleadoRolRepository.findByEmpleado_IdEmpleado(empleado.getIdUsuario());
                 if (!empleadoRoles.isEmpty()) {
                     rolNombre = empleadoRoles.getFirst().getRol().getNombreRol();
                 }
-            } else if (usuario.getPaciente() != null) {
+            } else if (usuario instanceof Paciente) {
                 // Si es paciente
-                var paciente = usuario.getPaciente();
+                Paciente paciente = (Paciente) usuario;
                 tipoUsuario = "PACIENTE";
-                idPersona = paciente.getIdPaciente();
+                idPersona = paciente.getIdUsuario();
                 nombres = paciente.getNombres();
                 apellidos = paciente.getApellidos();
                 rolNombre = "PACIENTE";

@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "cita")
 @Data
@@ -34,11 +33,11 @@ public class Cita {
     private String motivo;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPaciente", nullable = false)
+    @JoinColumn(name = "id_paciente", nullable = false)
     private Paciente paciente;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idEmpleado", nullable = false)
+    @JoinColumn(name = "id_empleado", nullable = false)
     private Empleado odontologo;
 
     @OneToMany(mappedBy = "cita", cascade = CascadeType.ALL, orphanRemoval = true)

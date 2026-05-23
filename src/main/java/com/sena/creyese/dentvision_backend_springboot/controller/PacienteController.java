@@ -37,7 +37,7 @@ public class PacienteController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/email/{email}")
+    @GetMapping("/correo/{correo}")
     public ResponseEntity<Paciente> getPacienteByEmail(@PathVariable String email) {
         return pacienteService.findByEmail(email)
                 .map(paciente -> new ResponseEntity<>(paciente, HttpStatus.OK))

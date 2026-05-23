@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@SuppressWarnings("ALL")
 @Entity
 @Table(name = "orden_detalle")
 @Data
@@ -20,11 +19,11 @@ public class OrdenDetalle {
     private Long idOrdenDetalle;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idOrden", nullable = false)
+    @JoinColumn(name = "id_orden", nullable = false)
     private Orden orden;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idServicio", nullable = false)
+    @JoinColumn(name = "id_servicio", nullable = false)
     private Servicio servicio;
     
     @Column(name = "cantidad", nullable = false)
