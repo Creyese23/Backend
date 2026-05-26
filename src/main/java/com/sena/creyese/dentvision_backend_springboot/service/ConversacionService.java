@@ -23,7 +23,7 @@ public class ConversacionService {
     }
 
     public List<Conversacion> findByPaciente(Long idPaciente) {
-        return conversacionRepository.findByPacienteIdPaciente(idPaciente);
+        return conversacionRepository.findByPacienteIdUsuario(idPaciente);
     }
 
     public Conversacion save(Conversacion conversacion) {

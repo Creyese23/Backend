@@ -26,7 +26,7 @@ public class EmpleadoRolService {
     }
 
     public List<EmpleadoRol> findByEmpleado(Long idEmpleado) {
-        return empleadoRolRepository.findByEmpleado_IdEmpleado(idEmpleado);
+        return empleadoRolRepository.findByEmpleado_IdUsuario(idEmpleado);
     }
 
     public List<EmpleadoRol> findByRol(Long idRol) {

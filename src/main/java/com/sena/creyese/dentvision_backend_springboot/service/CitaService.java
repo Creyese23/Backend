@@ -28,11 +28,11 @@ public class CitaService {
     }
 
     public List<Cita> findByPaciente(Long idPaciente) {
-        return citaRepository.findByPacienteIdPaciente(idPaciente);
+        return citaRepository.findByPacienteIdUsuario(idPaciente);
     }
 
     public List<Cita> findByOdontologo(Long idOdontologo) {
-        return citaRepository.findByOdontologoIdEmpleado(idOdontologo);
+        return citaRepository.findByOdontologoIdUsuario(idOdontologo);
     }
 
     public Cita save(Cita cita) {

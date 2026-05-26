@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface FacturaRepository extends JpaRepository<Factura, Long> {
-    List<Factura> findByPacienteIdPaciente(Long idPaciente);
+    List<Factura> findByPacienteIdUsuario(Long idPaciente);
     List<Factura> findByEstadoPago(String estadoPago);
 }

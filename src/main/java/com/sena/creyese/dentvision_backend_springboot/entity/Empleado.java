@@ -11,16 +11,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "empleado")
+@PrimaryKeyJoinColumn(name = "id_empleado")
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Empleado extends Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_empleado")
-    private Long idEmpleado;
 
     @Column(name = "nombres", nullable = false, length = 100)
     private String nombres;
@@ -39,5 +35,13 @@ public class Empleado extends Usuario {
 
     @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmpleadoRol> empleadoRoles = new ArrayList<>();
+
+    public Long getIdEmpleado() {
+        return getIdUsuario();
+    }
+
+    public void setIdEmpleado(Long idEmpleado) {
+        setIdUsuario(idEmpleado);
+    }
 
 }

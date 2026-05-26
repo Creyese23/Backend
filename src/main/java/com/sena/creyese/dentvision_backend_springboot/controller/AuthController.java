@@ -9,6 +9,7 @@ import com.sena.creyese.dentvision_backend_springboot.entity.Usuario;
 import com.sena.creyese.dentvision_backend_springboot.repository.EmpleadoRolRepository;
 import com.sena.creyese.dentvision_backend_springboot.repository.UsuarioRepository;
 import com.sena.creyese.dentvision_backend_springboot.security.JwtUtil;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,7 +39,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
@@ -66,7 +67,7 @@ public class AuthController {
                 nombres = empleado.getNombres();
                 apellidos = empleado.getApellidos();
                 // Obtener el primer rol del empleado
-                List<EmpleadoRol> empleadoRoles = empleadoRolRepository.findByEmpleado_IdEmpleado(empleado.getIdUsuario());
+                List<EmpleadoRol> empleadoRoles = empleadoRolRepository.findByEmpleado_IdUsuario(empleado.getIdUsuario());
                 if (!empleadoRoles.isEmpty()) {
                     rolNombre = empleadoRoles.getFirst().getRol().getNombreRol();
                 }
@@ -103,4 +104,3 @@ public class AuthController {
     }
 
 }
-

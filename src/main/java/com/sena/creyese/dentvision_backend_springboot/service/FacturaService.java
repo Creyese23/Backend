@@ -23,7 +23,7 @@ public class FacturaService {
     }
 
     public List<Factura> findByPaciente(Long idPaciente) {
-        return facturaRepository.findByPacienteIdPaciente(idPaciente);
+        return facturaRepository.findByPacienteIdUsuario(idPaciente);
     }
 
     public List<Factura> findByEstadoPago(String estadoPago) {

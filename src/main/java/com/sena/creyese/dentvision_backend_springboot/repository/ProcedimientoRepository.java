@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ProcedimientoRepository extends JpaRepository<Procedimiento, Long> {
     List<Procedimiento> findByCitaIdCita(Long idCita);
-    List<Procedimiento> findByTecnicoIdEmpleado(Long idTecnico);
+    List<Procedimiento> findByTecnicoIdUsuario(Long idTecnico);
 }

@@ -27,7 +27,7 @@ public class ProcedimientoService {
     }
 
     public List<Procedimiento> findByTecnico(Long idTecnico) {
-        return procedimientoRepository.findByTecnicoIdEmpleado(idTecnico);
+        return procedimientoRepository.findByTecnicoIdUsuario(idTecnico);
     }
 
     public Procedimiento save(Procedimiento procedimiento) {

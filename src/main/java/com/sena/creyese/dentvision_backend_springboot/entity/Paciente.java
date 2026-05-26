@@ -13,16 +13,12 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "paciente")
+@PrimaryKeyJoinColumn(name = "id_paciente")
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Paciente extends Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_paciente")
-    private Long idPaciente;
 
     @Column(name = "nombres", nullable = false, length = 100)
     private String nombres;
@@ -52,5 +48,13 @@ public class Paciente extends Usuario {
 
     @Column(name = "fecha_eliminacion")
     private LocalDateTime fechaEliminacion;
+
+    public Long getIdPaciente() {
+        return getIdUsuario();
+    }
+
+    public void setIdPaciente(Long idPaciente) {
+        setIdUsuario(idPaciente);
+    }
 
 }

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface EmpleadoRolRepository extends JpaRepository<EmpleadoRol, Long> {
-    List<EmpleadoRol> findByEmpleado_IdEmpleado(Long idEmpleado);
+    List<EmpleadoRol> findByEmpleado_IdUsuario(Long idEmpleado);
     List<EmpleadoRol> findByRol_IdRol(Long idRol);
-    Optional<EmpleadoRol> findByEmpleado_IdEmpleadoAndRol_IdRol(Long idEmpleado, Long idRol);
+    Optional<EmpleadoRol> findByEmpleado_IdUsuarioAndRol_IdRol(Long idEmpleado, Long idRol);
 }

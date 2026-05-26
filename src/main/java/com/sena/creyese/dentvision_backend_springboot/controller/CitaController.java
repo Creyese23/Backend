@@ -33,7 +33,7 @@ public class CitaController {
     }
 
     @GetMapping("/fecha/{fecha}")
-    public ResponseEntity<List<Cita>> getCitasByFecha(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime fechaHora) {
+    public ResponseEntity<List<Cita>> getCitasByFecha(@PathVariable("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fechaHora) {
         List<Cita> citas = citaService.findByFechaHora(fechaHora);
         return new ResponseEntity<>(citas, HttpStatus.OK);
     }
