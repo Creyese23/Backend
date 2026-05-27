@@ -1,6 +1,7 @@
 package com.sena.creyese.dentvision_backend_springboot.service;
 
 import com.sena.creyese.dentvision_backend_springboot.entity.Factura;
+import com.sena.creyese.dentvision_backend_springboot.enums.EstadoPago;
 import com.sena.creyese.dentvision_backend_springboot.repository.FacturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class FacturaService {
         return facturaRepository.findByPacienteIdUsuario(idPaciente);
     }
 
-    public List<Factura> findByEstadoPago(String estadoPago) {
+    public List<Factura> findByEstadoPago(EstadoPago estadoPago) {
         return facturaRepository.findByEstadoPago(estadoPago);
     }
 

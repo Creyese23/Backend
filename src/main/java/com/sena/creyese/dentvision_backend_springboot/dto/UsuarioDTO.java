@@ -1,5 +1,6 @@
 package com.sena.creyese.dentvision_backend_springboot.dto;
 
+import com.sena.creyese.dentvision_backend_springboot.enums.UsuarioEstado;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ public class UsuarioDTO {
     private String email;
     private String password;
     private Boolean usuarioPorDefecto;
-    private String estado;
+    private UsuarioEstado estado;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaActualizacion;
     private LocalDateTime fechaEliminacion;

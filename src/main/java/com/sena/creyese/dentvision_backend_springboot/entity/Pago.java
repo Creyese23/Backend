@@ -1,6 +1,6 @@
 package com.sena.creyese.dentvision_backend_springboot.entity;
 
-import com.sena.creyese.dentvision_backend_springboot.enums.PagoEstado;
+import com.sena.creyese.dentvision_backend_springboot.enums.EstadoPago;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "pagos")
+@Table(name = "pago")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,7 +38,7 @@ public class Pago {
     
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, length = 20)
-    private PagoEstado estado;
+    private EstadoPago estado;
 
     @CreationTimestamp
     @Column(name = "fecha_creacion", nullable = false, updatable = false)

@@ -5,15 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "paciente")
-@PrimaryKeyJoinColumn(name = "id_paciente")
+@PrimaryKeyJoinColumn(name = "idPaciente")
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
@@ -37,24 +34,5 @@ public class Paciente extends Usuario {
 
     @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;
-
-    @CreationTimestamp
-    @Column(name = "fecha_creacion", nullable = false, updatable = false)
-    private LocalDateTime fechaCreacion;
-
-    @UpdateTimestamp
-    @Column(name = "fecha_actualizacion", nullable = false)
-    private LocalDateTime fechaActualizacion;
-
-    @Column(name = "fecha_eliminacion")
-    private LocalDateTime fechaEliminacion;
-
-    public Long getIdPaciente() {
-        return getIdUsuario();
-    }
-
-    public void setIdPaciente(Long idPaciente) {
-        setIdUsuario(idPaciente);
-    }
 
 }

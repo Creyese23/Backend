@@ -1,5 +1,6 @@
 package com.sena.creyese.dentvision_backend_springboot.dto;
 
+import com.sena.creyese.dentvision_backend_springboot.enums.EstadoPago;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +17,5 @@ public class PagoDTO {
     private LocalDate fechaPago;
     private String metodoPago;
     private BigDecimal valor;
-    private String estado;
+    private EstadoPago estado;
 }

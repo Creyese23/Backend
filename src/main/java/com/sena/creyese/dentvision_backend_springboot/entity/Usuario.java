@@ -1,5 +1,6 @@
 package com.sena.creyese.dentvision_backend_springboot.entity;
 
+import com.sena.creyese.dentvision_backend_springboot.enums.UsuarioEstado;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -22,14 +23,15 @@ public class Usuario {
     @Column(name = "email", nullable = false, length = 100, unique = true)
     private String email;
 
-    @Column(name = "password", nullable = false, length = 255)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "usuario_por_defecto", nullable = false)
     private Boolean usuarioPorDefecto = false;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, length = 20)
-    private String estado = "ACTIVO";
+    private UsuarioEstado estado = UsuarioEstado.ACTIVO;
 
     @CreationTimestamp
     @Column(name = "fecha_creacion", nullable = false, updatable = false)

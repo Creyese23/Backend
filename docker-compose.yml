@@ -20,7 +20,7 @@ services:
       mysql:
         condition: service_healthy
     environment:
-      DB_URL: jdbc:mysql://mysql:3306/db_dentivision
+      DB_URL: jdbc:mysql://database-1.clg6gcmkex9d.us-east-2.rds.amazonaws.com:3306/db_dentivision
       DB_USERNAME: root
       DB_PASSWORD: ${DB_PASSWORD}
       JWT_SECRET: ${JWT_SECRET:-change-me-please-use-at-least-32-characters}

@@ -1,5 +1,6 @@
 package com.sena.creyese.dentvision_backend_springboot.entity;
 
+import com.sena.creyese.dentvision_backend_springboot.enums.ServicioEstado;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,6 @@ public class Servicio {
     @Column(name = "duracion_estimada")
     private Integer duracionEstimada;
     
+    @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, length = 20)
-    private String estado;
-}
+    private ServicioEstado estado;

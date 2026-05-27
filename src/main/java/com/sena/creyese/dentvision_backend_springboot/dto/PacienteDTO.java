@@ -1,6 +1,7 @@
 package com.sena.creyese.dentvision_backend_springboot.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sena.creyese.dentvision_backend_springboot.enums.PacienteEstado;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public class PacienteDTO {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaNacimiento;
 
-    private String estado;
+    private PacienteEstado estado;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaActualizacion;
     private LocalDateTime fechaEliminacion;
