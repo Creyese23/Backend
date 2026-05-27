@@ -1,5 +1,8 @@
 package com.sena.creyese.dentvision_backend_springboot.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum ServicioEstado {
     ACTIVO("Activo"),
     INACTIVO("Inactivo"),
@@ -11,7 +14,4 @@ public enum ServicioEstado {
         this.descripcion = descripcion;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
 }
